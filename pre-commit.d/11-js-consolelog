@@ -1,0 +1,14 @@
+#!/bin/sh
+exec 1>&2
+exec < /dev/tty
+consoleregexp='console.log('
+
+if test $(git diff --cached | grep $consoleregexp | wc -l) != 0
+then
+  exec git diff --cached | grep -ne $consoleregexp
+  echo "There are some occurrences of console.log at your modification"
+  exit 1;
+fi
+
+echo "console.log() not found"
+exit 0;

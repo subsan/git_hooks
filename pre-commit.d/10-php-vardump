@@ -1,0 +1,10 @@
+#!/bin/sh
+
+VAR=$(git diff --cached | php -w | grep -w "var_dump\|print_r")
+if [ ! -z "$VAR" ]; then
+  echo "var_dump|print_r in one of your files!"
+  exit 1
+fi 
+
+echo "stop words not found"
+exit 0

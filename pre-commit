@@ -1,0 +1,21 @@
+#!/bin/sh
+
+script_dir=$(dirname $0)
+hook_name=$(basename $0)
+hook_dir="$script_dir/$hook_name.d"
+
+for hook in $hook_dir/*; do
+    echo ""
+    echo "Running $hook_name/$hook hook"
+    echo "$stdin" | $hook "$@"
+
+    exit_code=$?
+
+    if [ $exit_code != 0 ]; then
+      echo "aborting commit..."
+
+      exit $exit_code
+    fi
+done
+
+exit 0
