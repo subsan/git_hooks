@@ -1,0 +1,6 @@
+#!/bin/sh
+echo ""
+VAR=$(git diff --cached --name-only)
+echo "$stdin" | vendor/bin/phpstan analyse --level 0 --autoload-file vendor/autoload.php $VAR "$@"
+exit_code=$?
+exit $exit_code
