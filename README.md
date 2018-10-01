@@ -11,6 +11,7 @@ This hook check saving code before you save commit.
 - `js-consolelog` - check for absence in js files `console.log` function
 - `phpunit`       - run `phpunit` from `vendor/bin` and check for errors
 - `phpstan`       - run `phpstan` from `vendor/bin` and check for errors
+- `codeception`   - run `codecept` from `vendor/bin` and check for errors
 
 ## Ignore checking
 If you know what you are doing:
