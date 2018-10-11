@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ ! -f "RoboFile.php" ]
+then
+    echo "Robo not found."
+    exit 0
+fi
+
+script_dir=$(dirname $0)
+    echo ""
+    echo "$stdin" | vendor/bin/robo parallel:all "$@"
+    exit_code=$?
+exit $exit_code
