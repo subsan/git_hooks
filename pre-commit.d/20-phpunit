@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ ! -f "vendor/bin/phpunit" ] || [ ! -f "phpunit.xml" ]
+then
+    echo "PHPUnit not found."
+    exit 0
+fi
+
 script_dir=$(dirname $0)
     echo ""
     echo "$stdin" | vendor/bin/phpunit "$@"

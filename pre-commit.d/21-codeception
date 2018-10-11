@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ ! -f "vendor/bin/codecept" ]
+then
+    echo "Codeception not found."
+    exit 0
+fi
+
 script_dir=$(dirname $0)
     echo ""
     echo "$stdin" | vendor/bin/codecept run "$@"
